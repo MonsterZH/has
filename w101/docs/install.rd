@@ -119,4 +119,137 @@ TODO: lv1 からスクリプトを取得する。
 
 == インストール
 
+  $ sudo aptitude install apache2-mpm-prefork -y
 
+ブラウザで http://<サーバのIPアドレス>/ にアクセスする。
+すると、「It works!」と表示される。
+
+== 設定
+
+* httpd デーモンのユーザ権限: www-data (Debian のデフォルト)
+* httpd デーモンのグループ権限: www-data (Debian のデフォルト)
+* サイト管理者のアドレス: admin@takao7.net
+* ホスト名: www.takao7.net
+
+作業手順。
+
+  $ sudo cp -a /etc/apache2/sites-available /etc/apache2/sites-available.orig
+  $ sudo vi /etc/apache2/sites-available/default
+  $ diff -ur /etc/apache2/sites-available.orig /etc/apache2/sites-available
+    (以下、想定する実行結果)
+    diff -ur /etc/apache2/sites-available.orig/default /etc/apache2/sites-available/default
+    --- /etc/apache2/sites-available.orig/default   2008-08-09 02:32:34.000000000 +0900
+    +++ /etc/apache2/sites-available/default        2008-09-21 23:06:08.577717011 +0900
+    @@ -1,5 +1,6 @@
+     <VirtualHost *:80>
+    -       ServerAdmin webmaster@localhost
+    +       ServerAdmin admin@takao7.net
+    +       ServerName www.takao7.net
+     
+            DocumentRoot /var/www/
+            <Directory />
+
+= MySQL のインストール
+
+== インストール
+
+  $ sudo aptitude install mysql-server mysql-client -y
+    (以下、想定する実行結果)
+    Reading package lists... Done
+    Building dependency tree       
+    Reading state information... Done
+    Reading extended state information      
+    Initializing package states... Done
+    Reading task descriptions... Done  
+    The following NEW packages will be installed:
+      libdbd-mysql-perl{a} libdbi-perl{a} libhtml-template-perl{a} 
+      libnet-daemon-perl{a} libplrpc-perl{a} libterm-readkey-perl{a} 
+      mysql-client mysql-client-5.0{a} mysql-server mysql-server-5.0{a} 
+      psmisc{a} 
+    0 packages upgraded, 11 newly installed, 0 to remove and 0 not upgraded.
+    Need to get 35.6MB of archives. After unpacking 105MB will be used.
+
+== 設定
+
+TODO: root ユーザのパスワードの設定や、ユーザの追加、ファイルの配置の変更などいろいろ
+
+= NFS のインストール
+
+== インストール
+
+  $ sudo aptitude -y install nfs-kernel-server
+    (以下、想定する実行結果)
+    Reading package lists... Done
+    Building dependency tree       
+    Reading state information... Done
+    Reading extended state information      
+    Initializing package states... Done
+    Reading task descriptions... Done  
+    The following NEW packages will be installed:
+      nfs-kernel-server 
+    0 packages upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+    Need to get 150kB of archives. After unpacking 373kB will be used.
+
+== 設定
+
+TODO: shared なディレクトリの決定。/etc/exports の設定。/etc/fstab の設定。/etc/init.d/のどこかで nfs をマウントする。
+
+参考URL: http://www.server-world.info/note?os=deb4&p=nfs
+
+= syslog-ng のインストール
+
+== インストール
+
+  $ sudo aptitude -y install syslog-ng
+    (以下、想定する実行結果)
+    Reading package lists... Done
+    Building dependency tree
+    Reading state information... Done
+    Reading extended state information
+    Initializing package states... Done
+    Reading task descriptions... Done
+    The following NEW packages will be installed:
+      libevtlog0{a} libglib2.0-0{a} libglib2.0-data{a} syslog-ng
+    The following packages will be REMOVED:
+      klogd{a} sysklogd{a}
+    0 packages upgraded, 4 newly installed, 2 to remove and 0 not upgraded.
+    Need to get 1594kB of archives. After unpacking 5337kB will be used.
+
+== 設定
+
+TODO: syslog サーバとして設定する。冗長化を前提とする。
+
+= DRBD のインストール
+
+== インストール
+
+  $ sudo aptitude install drbd8-modules-2.6.26-1-amd64
+    (以下、想定する実行結果)
+    Reading package lists... Done
+    Building dependency tree
+    Reading state information... Done
+    Reading extended state information      
+    Initializing package states... Done
+    Writing extended state information... Done
+    Reading task descriptions... Done         
+    The following NEW packages will be installed:
+      drbd8-modules-2.6.26-1-amd64 
+    0 packages upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+    Need to get 101kB of archives. After unpacking 365kB will be used.
+
+  $ sudo aptitude install drbd8-utils drbdlinks
+    (以下、想定する実行結果) 
+    Reading package lists... Done
+    Building dependency tree       
+    Reading state information... Done
+    Reading extended state information      
+    Initializing package states... Done
+    Reading task descriptions... Done  
+    The following NEW packages will be installed:
+      drbd8-utils drbdlinks 
+    0 packages upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+    Need to get 147kB of archives. After unpacking 430kB will be used.
+
+== 設定
+
+TODO: shared のパーティションの作成。
