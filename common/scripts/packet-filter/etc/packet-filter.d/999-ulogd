@@ -1,0 +1,2 @@
+$IPTABLES -A INPUT -j ULOG --ulog-nlgroup 1 --ulog-prefix "droped packet: "
+$IPTABLES -A FORWARD -j ULOG --ulog-nlgroup 1 --ulog-prefix "droped packet(FORWARD): "

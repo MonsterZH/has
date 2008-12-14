@@ -1,0 +1,3 @@
+modprobe iptable_nat
+modprobe ip_conntrack_ftp
+modprobe ip_nat_ftp

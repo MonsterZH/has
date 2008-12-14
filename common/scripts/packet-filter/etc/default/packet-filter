@@ -1,0 +1,7 @@
+IP="/sbin/ip"
+IPTABLES="/sbin/iptables"
+SCRIPTS_DIR="/etc/packet-filter.d"
+WAN_INTERFACE="eth0"
+LAN_INTERFACE="eth1"
+VIP="192.168.0.240"
+LAN="192.168.77.0/24"

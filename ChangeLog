@@ -1,3 +1,9 @@
+Mon Dec 15 00:12:06 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* common/scripts: スクリプトを配置するディレクトリを作成。
+
+	* common/scripts/packet-filter: パケットフィルタを実現するスクリプトを追加。
+
 Sun Dec 14 20:27:41 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* common/debian/Makefile (all): apt-line に必要なファイルを作成する

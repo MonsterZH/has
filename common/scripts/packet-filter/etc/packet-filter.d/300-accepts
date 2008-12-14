@@ -1,0 +1,15 @@
+$IPTABLES -A INPUT -p tcp --dport ssh -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport bootps -j ACCEPT
+$IPTABLES -A INPUT -p udp --dport bootps -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport bootpc -j ACCEPT
+$IPTABLES -A INPUT -p udp --dport bootpc -j ACCEPT
+$IPTABLES -A INPUT -p udp --sport domain -j ACCEPT
+$IPTABLES -A INPUT -p udp --dport route -j ACCEPT
+$IPTABLES -A INPUT -p udp --dport ntp -j ACCEPT
+$IPTABLES -A INPUT -p udp --dport snmp -j ACCEPT
+$IPTABLES -A INPUT -p tcp --dport www -j ACCEPT
+
+$IPTABLES -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+$IPTABLES -A FORWARD -i $LAN_INTERFACE -o $WAN_INTERFACE -s $LAN -j ACCEPT
+$IPTABLES -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT

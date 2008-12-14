@@ -1,0 +1,5 @@
+#$IPTABLES -t mangle -A PREROUTING -d $VIP -j MARK --set-mark 1
+#$IP rule delete prio 100 fwmark 1 table 100 || true
+#$IP rule add prio 100 fwmark 1 table 100 || true
+#$IP route del local default dev lo table 100 || true
+#$IP route add local default dev lo table 100 || true

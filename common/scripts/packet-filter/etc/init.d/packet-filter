@@ -1,0 +1,38 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:		packet-filter
+# Required-Start:	
+# Required-Stop:	
+# Default-Start:	
+# Default-Stop:		
+# Short-Description:	Run iptables to filter packets.
+### END INIT INFO
+
+set -e
+
+CONFIG_PATH=/etc/default/packet-filter
+test -e ${CONFIG_PATH} || exit 0
+. ${CONFIG_PATH}
+
+. /lib/lsb/init-functions
+
+test -x ${IPTABLES} || exit 0
+test -d ${SCRIPTS_DIR} || exit 0
+
+export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
+
+case "$1" in
+  start)
+  	for f in `ls ${SCRIPTS_DIR} | grep -v '\(\.[^.]\+\|~\)$' | sort`; do
+	    f="${SCRIPTS_DIR}/$f"
+	    log_action_msg "run ${f}"
+	    . ${f}
+	done
+	;;
+  *)
+	log_action_msg "Usage: /etc/init.d/packet-filter start"
+	exit 1
+esac
+
+exit 0

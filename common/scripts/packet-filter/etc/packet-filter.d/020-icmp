@@ -1,0 +1,13 @@
+$IPTABLES -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+$IPTABLES -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT
+$IPTABLES -A INPUT -p icmp --icmp-type destination-unreachable -j ACCEPT
+$IPTABLES -A INPUT -p icmp --icmp-type source-quench -j ACCEPT
+$IPTABLES -A INPUT -p icmp --icmp-type time-exceeded -j ACCEPT
+$IPTABLES -A INPUT -p icmp --icmp-type parameter-problem -j ACCEPT
+
+$IPTABLES -A FORWARD -p icmp --icmp-type echo-request -j ACCEPT
+$IPTABLES -A FORWARD -p icmp --icmp-type echo-reply -j ACCEPT
+$IPTABLES -A FORWARD -p icmp --icmp-type destination-unreachable -j ACCEPT
+$IPTABLES -A FORWARD -p icmp --icmp-type source-quench -j ACCEPT
+$IPTABLES -A FORWARD -p icmp --icmp-type time-exceeded -j ACCEPT
+$IPTABLES -A FORWARD -p icmp --icmp-type parameter-problem -j ACCEPT

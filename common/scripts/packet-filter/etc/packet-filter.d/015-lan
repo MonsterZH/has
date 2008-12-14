@@ -1,0 +1,1 @@
+$IPTABLES -A INPUT -i $LAN -j ACCEPT
