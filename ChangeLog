@@ -1,3 +1,8 @@
+Mon Dec 15 00:21:58 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* lv1/docs/install-pending.rd: ペンディングした作業ログを記述するた
+	  めのファイルを追加。
+
 Mon Dec 15 00:18:25 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* common/debian: apt-line に必要なファイルを追加。
