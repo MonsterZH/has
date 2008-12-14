@@ -1,3 +1,7 @@
+Mon Dec 15 00:23:10 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* lv1/docs/install.rd: IPVS NAT のロードバランサのインストールを追記。
+
 Mon Dec 15 00:21:58 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* lv1/docs/install-pending.rd: ペンディングした作業ログを記述するた
