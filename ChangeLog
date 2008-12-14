@@ -1,3 +1,7 @@
+Mon Dec 15 00:18:25 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* common/debian: apt-line に必要なファイルを追加。
+
 Mon Dec 15 00:12:06 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* common/scripts: スクリプトを配置するディレクトリを作成。
