@@ -1,0 +1,28 @@
+Format: 1.8
+Date: Sun, 14 Dec 2008 17:01:36 +0900
+Source: keepalived
+Binary: keepalived
+Architecture: source i386
+Version: 1.1.15-1-0takao7.net1
+Distribution: unstable
+Urgency: low
+Maintainer: Alexander Wirt <formorer@debian.org>
+Changed-By: TAKAO Kouji <kouji@takao7.net>
+Description: 
+ keepalived - Failover and monitoring daemon for LVS clusters
+Changes: 
+ keepalived (1.1.15-1-0takao7.net1) unstable; urgency=low
+ .
+   * supported linux-image-2.6.26.
+Checksums-Sha1: 
+ b9fa320f6af40c5046cabf2848169559228906f0 588 keepalived_1.1.15-1-0takao7.net1.dsc
+ cfc6cfea856fd910a8fe253aa64f170b35e6b630 242653 keepalived_1.1.15-1-0takao7.net1.tar.gz
+ e53a0fd147f04eb2de6fce0efff668927b6cdead 118084 keepalived_1.1.15-1-0takao7.net1_i386.deb
+Checksums-Sha256: 
+ dd9471ed65203d14534cb979b72393adcb198d201c6aaaed9cf292f636f76f65 588 keepalived_1.1.15-1-0takao7.net1.dsc
+ 62315e230d7aab048879986cf68731ff1cb5815d123229aa06fec89097d2a9b8 242653 keepalived_1.1.15-1-0takao7.net1.tar.gz
+ 4c64523a0f495a5f727496e1ef627dedae46490354b1c32cef54a65d280877fb 118084 keepalived_1.1.15-1-0takao7.net1_i386.deb
+Files: 
+ e1b25682d1a42407d391f538441c02fd 588 admin optional keepalived_1.1.15-1-0takao7.net1.dsc
+ 27f3f5937e06e070ad1508dd4907f885 242653 admin optional keepalived_1.1.15-1-0takao7.net1.tar.gz
+ 670ed2ee8f79e274c29d740f24a06f51 118084 admin optional keepalived_1.1.15-1-0takao7.net1_i386.deb

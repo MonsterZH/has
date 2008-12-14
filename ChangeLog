@@ -1,3 +1,13 @@
+Sun Dec 14 20:18:34 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* common/debian: deb パッケージを格納するためのディレクトリを追加。
+
+	* common/debian/ipvsadm*: Linux カーネル 2.6.26 用の ipvsadm パッケー
+	  ジを追加。
+
+	* common/debian/keepalived*: Linux カーネル 2.6.26 用の keepalived
+	  パッケージを追加。
+
 Sun Sep 21 22:54:51 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* これまでの作業手順を追加。

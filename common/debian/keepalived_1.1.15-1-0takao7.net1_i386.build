@@ -1,0 +1,352 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: set CFLAGS to default value: -g -O2
+dpkg-buildpackage: set CPPFLAGS to default value: 
+dpkg-buildpackage: set LDFLAGS to default value: 
+dpkg-buildpackage: set FFLAGS to default value: -g -O2
+dpkg-buildpackage: set CXXFLAGS to default value: -g -O2
+dpkg-buildpackage: source package keepalived
+dpkg-buildpackage: source version 1.1.15-1-0takao7.net1
+dpkg-buildpackage: source changed by TAKAO Kouji <kouji@takao7.net>
+dpkg-buildpackage: host architecture i386
+ fakeroot debian/rules clean
+test -x debian/rules
+dh_testroot
+/usr/bin/make -f debian/rules reverse-config
+make[1]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+make[1]: Nothing to be done for `reverse-config'.
+make[1]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+if [ "reverse-patches" = "reverse-patches" ]; then rm -f debian/stamp-patched; fi
+patches: debian/patches/02_fix_kernel_version_detection.patch debian/patches/04_fix_manpage.patch debian/patches/99_linux_2.6_compat.patch
+Patch debian/patches/99_linux_2.6_compat.patch is not applied.
+Patch debian/patches/04_fix_manpage.patch is not applied.
+Patch debian/patches/02_fix_kernel_version_detection.patch is not applied.
+if [ "reverse-patches" != "reverse-patches" ]; then touch debian/stamp-patched; fi
+if [ "reverse-patches" != "reverse-patches" ] ; then \
+		/usr/bin/make -f debian/rules update-config ; \
+	fi
+for dir in debian/patches ; do \
+	    rm -f $dir/*.log ; \
+	done
+dh_clean 
+/usr/bin/make -C . -k distclean
+make[1]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+make[1]: *** No rule to make target `distclean'.
+make[1]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+make: [makefile-clean] Error 2 (ignored)
+rm -f debian/stamp-makefile-build
+rm -f debian/stamp-autotools-files
+rm config.status
+rm: cannot remove `config.status': No such file or directory
+make: [clean] Error 1 (ignored)
+rm config.log
+rm: cannot remove `config.log': No such file or directory
+make: [clean] Error 1 (ignored)
+ dpkg-source -b keepalived-1.1.15-1
+dpkg-source: info: using source format `1.0'
+dpkg-source: info: building keepalived in keepalived_1.1.15-1-0takao7.net1.tar.gz
+dpkg-source: info: building keepalived in keepalived_1.1.15-1-0takao7.net1.dsc
+ debian/rules build
+test -x debian/rules
+mkdir -p "."
+/usr/bin/make -f debian/rules reverse-config
+make[1]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+make[1]: Nothing to be done for `reverse-config'.
+make[1]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+if [ "debian/stamp-patched" = "reverse-patches" ]; then rm -f debian/stamp-patched; fi
+patches: debian/patches/02_fix_kernel_version_detection.patch debian/patches/04_fix_manpage.patch debian/patches/99_linux_2.6_compat.patch
+Trying patch debian/patches/02_fix_kernel_version_detection.patch at level 1 ... 0 ... success.
+Trying patch debian/patches/04_fix_manpage.patch at level 1 ... success.
+Trying patch debian/patches/99_linux_2.6_compat.patch at level 1 ... success.
+if [ "debian/stamp-patched" != "reverse-patches" ]; then touch debian/stamp-patched; fi
+if [ "debian/stamp-patched" != "reverse-patches" ] ; then \
+		/usr/bin/make -f debian/rules update-config ; \
+	fi
+make[1]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+make[1]: Nothing to be done for `update-config'.
+make[1]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+if [ -e ./configure.ac ] || [ -e ./configure.in ]; then cd . && `which autoconf1  || which autoconf`; fi
+touch debian/stamp-autotools-files
+chmod a+x /home/worker/setup/debian/keepalived-1.1.15-1/./configure
+cd . && CC="cc" CXX="g++" CFLAGS="-g -O2 -g -Wall -O2" CXXFLAGS="-g -O2 -g -Wall -O2" CPPFLAGS="" LDFLAGS="" /home/worker/setup/debian/keepalived-1.1.15-1/./configure --build=i486-linux-gnu --prefix=/usr --includedir="\${prefix}/include" --mandir="\${prefix}/share/man" --infodir="\${prefix}/share/info" --sysconfdir=/etc --localstatedir=/var --libexecdir="\${prefix}/lib/keepalived" --disable-maintainer-mode --disable-dependency-tracking --srcdir=.  --with-kernel-dir=/home/worker/setup/debian/keepalived-1.1.15-1/debian 
+checking for gcc... cc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether cc accepts -g... yes
+checking for cc option to accept ISO C89... none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for strip... strip
+checking how to run the C preprocessor... cc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/wait.h that is POSIX.1 compatible... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking syslog.h usability... yes
+checking syslog.h presence... yes
+checking for syslog.h... yes
+checking for unistd.h... (cached) yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking openssl/ssl.h usability... yes
+checking openssl/ssl.h presence... yes
+checking for openssl/ssl.h... yes
+checking openssl/md5.h usability... yes
+checking openssl/md5.h presence... yes
+checking for openssl/md5.h... yes
+checking openssl/err.h usability... yes
+checking openssl/err.h presence... yes
+checking for openssl/err.h... yes
+checking for MD5_Init in -lcrypto... yes
+checking for SSL_CTX_new in -lssl... yes
+checking for poptGetContext in -lpopt... yes
+checking for kernel version... 2.6.26
+checking for /home/worker/setup/debian/keepalived-1.1.15-1/debian/net/core/link_watch.c... yes
+checking net/ip_vs.h usability... yes
+checking net/ip_vs.h presence... yes
+checking for net/ip_vs.h... yes
+checking for IPVS version... 1.2.1
+checking for IPVS syncd support... yes
+checking for kernel netlink support... yes
+checking for an ANSI C-conforming const... yes
+checking for pid_t... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking whether cc needs -traditional... no
+checking for working memcmp... yes
+checking return type of signal handlers... void
+checking for gettimeofday... yes
+checking for select... yes
+checking for socket... yes
+checking for strerror... yes
+checking for strtol... yes
+checking for uname... yes
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating genhash/Makefile
+config.status: WARNING:  genhash/Makefile.in seems to ignore the --datarootdir setting
+config.status: creating keepalived/core/Makefile
+config.status: creating keepalived/include/config.h
+config.status: creating keepalived.spec
+config.status: creating keepalived/Makefile
+config.status: WARNING:  keepalived/Makefile.in seems to ignore the --datarootdir setting
+config.status: creating lib/Makefile
+config.status: creating keepalived/vrrp/Makefile
+config.status: creating keepalived/check/Makefile
+config.status: creating keepalived/libipvs-2.6/Makefile
+
+Keepalived configuration
+------------------------
+Keepalived version       : 1.1.15
+Compiler                 : cc
+Compiler flags           : -g -O2 -g -Wall -O2
+Extra Lib                : -lpopt -lssl -lcrypto 
+Use IPVS Framework       : Yes
+IPVS sync daemon support : Yes
+Use VRRP Framework       : Yes
+Use LinkWatch            : Yes
+Use Debug flags          : No
+/usr/bin/make -C . 
+make[1]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+/usr/bin/make -C lib || exit 1;
+make[2]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/lib'
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c memory.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c utils.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c notify.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c timer.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c scheduler.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c vector.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c list.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c html.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c parser.c
+cc -g -O2 -g -Wall -O2 -I. -Wall -Wunused -Wstrict-prototypes  -c signals.c
+make[2]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/lib'
+/usr/bin/make -C keepalived
+make[2]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived'
+make[3]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived/core'
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_WITH_VRRP_  -c main.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_WITH_VRRP_  -c daemon.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_WITH_VRRP_  -c pidfile.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_WITH_VRRP_  -c layer4.c
+layer4.c: In function 'tcp_socket_state':
+layer4.c:111: warning: pointer targets in passing argument 5 of 'getsockopt' differ in signedness
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_WITH_VRRP_  -c smtp.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_WITH_VRRP_  -c global_data.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_WITH_VRRP_  -c global_parser.c
+make[3]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived/core'
+make[3]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived/check'
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_daemon.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_data.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_parser.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_api.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_tcp.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_http.c
+check_http.c: In function 'http_handle_response':
+check_http.c:459: warning: pointer targets in assignment differ in signedness
+check_http.c:461: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness
+check_http.c:463: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness
+check_http.c:463: warning: pointer targets in passing argument 2 of '__builtin_strcmp' differ in signedness
+check_http.c:463: warning: pointer targets in passing argument 2 of '__builtin_strcmp' differ in signedness
+check_http.c:463: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness
+check_http.c:463: warning: pointer targets in passing argument 2 of '__builtin_strcmp' differ in signedness
+check_http.c:463: warning: pointer targets in passing argument 2 of '__builtin_strcmp' differ in signedness
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_ssl.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_smtp.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c check_misc.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c ipwrapper.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_ -D_WITH_VRRP_  -c ipvswrapper.c
+make[3]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived/check'
+make[3]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived/vrrp'
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_daemon.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_data.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_parser.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp.c
+vrrp.c: In function 'vrrp_in_chk_ipsecah':
+vrrp.c:146: warning: pointer targets in passing argument 1 of 'hmac_md5' differ in signedness
+vrrp.c: In function 'vrrp_build_ipsecah':
+vrrp.c:407: warning: pointer targets in passing argument 1 of 'hmac_md5' differ in signedness
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_notify.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_scheduler.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_sync.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_index.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_netlink.c
+vrrp_netlink.c: In function 'netlink_socket':
+vrrp_netlink.c:89: warning: pointer targets in passing argument 3 of 'getsockname' differ in signedness
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_arp.c
+vrrp_arp.c: In function 'send_gratuitous_arp':
+vrrp_arp.c:87: warning: pointer targets in initialization differ in signedness
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_if.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_track.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_ipaddress.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_iproute.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../include -I../../lib -Wall -Wunused -Wstrict-prototypes -D_KRNL_2_6_ -D_WITH_LINKWATCH_ -D_WITH_LVS_ -D_HAVE_IPVS_SYNCD_  -c vrrp_ipsecah.c
+make[3]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived/vrrp'
+make[3]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived/libipvs-2.6'
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -Wall -Wunused   -c -o libipvs.o libipvs.c
+ar rv libipvs.a libipvs.o
+ar: creating libipvs.a
+a - libipvs.o
+rm libipvs.o
+make[3]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived/libipvs-2.6'
+Building ../bin/keepalived
+strip ../bin/keepalived
+
+Make complete
+make[2]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived'
+/usr/bin/make -C genhash
+make[2]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/genhash'
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../lib -Wall -Wunused -Wstrict-prototypes   -c -o main.o main.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../lib -Wall -Wunused -Wstrict-prototypes   -c -o sock.o sock.c
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../lib -Wall -Wunused -Wstrict-prototypes   -c -o layer4.o layer4.c
+layer4.c: In function 'tcp_socket_state':
+layer4.c:97: warning: pointer targets in passing argument 5 of 'getsockopt' differ in signedness
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../lib -Wall -Wunused -Wstrict-prototypes   -c -o http.o http.c
+http.c: In function 'finalize':
+http.c:99: warning: pointer targets in passing argument 1 of 'dump_buffer' differ in signedness
+cc -g -O2 -g -Wall -O2  -I/home/worker/setup/debian/keepalived-1.1.15-1/debian/include -I../lib -Wall -Wunused -Wstrict-prototypes   -c -o ssl.o ssl.c
+Building ../bin/genhash
+strip ../bin/genhash
+
+Make complete
+make[2]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/genhash'
+
+Make complete
+make[1]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+touch debian/stamp-makefile-build
+DEB_MAKE_CHECK_TARGET unset, not running checks
+ fakeroot debian/rules binary
+test -x debian/rules
+dh_testroot
+dh_clean -k 
+dh_installdirs -A 
+mkdir -p "."
+DEB_MAKE_CHECK_TARGET unset, not running checks
+/usr/bin/make -C . install DESTDIR=/home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived/
+make[1]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+/usr/bin/make -C keepalived install
+make[2]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived'
+install -d /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/sbin
+install -m 700 ../bin/keepalived /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/sbin/
+install -d /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/rc.d/init.d
+install -m 755 etc/init.d/keepalived.init /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/rc.d/init.d/keepalived
+install -d /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/sysconfig
+install -m 755 etc/init.d/keepalived.sysconfig /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/sysconfig/keepalived
+install -d /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/keepalived/samples
+install -m 644 etc/keepalived/keepalived.conf /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/keepalived/
+install -m 644 ../doc/samples/* /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/keepalived/samples/
+install -d /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/share/man/man5
+install -d /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/share/man/man8
+install -m 644 ../doc/man/man5/keepalived.conf.5 /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/share/man/man5
+install -m 644 ../doc/man/man8/keepalived.8 /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/share/man/man8
+make[2]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/keepalived'
+/usr/bin/make -C genhash install
+make[2]: Entering directory `/home/worker/setup/debian/keepalived-1.1.15-1/genhash'
+install -d /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/bin
+install -m 755 ../bin/genhash /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/bin/
+install -d /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/share/man/man1
+install -m 644 ../doc/man/man1/genhash.1 /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/share/man/man1
+make[2]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1/genhash'
+make[1]: Leaving directory `/home/worker/setup/debian/keepalived-1.1.15-1'
+dh_installdirs -pkeepalived 
+dh_installdocs -pkeepalived ./README ./TODO  
+dh_installexamples -pkeepalived 
+dh_installman -pkeepalived  
+dh_installinfo -pkeepalived  
+dh_installmenu -pkeepalived 
+dh_installcron -pkeepalived 
+dh_installinit -pkeepalived   
+dh_installdebconf -pkeepalived 
+dh_installemacsen -pkeepalived   
+dh_installcatalogs -pkeepalived 
+dh_installpam -pkeepalived 
+dh_installlogrotate -pkeepalived 
+dh_installlogcheck -pkeepalived 
+dh_installchangelogs -pkeepalived  ./ChangeLog 
+dh_installudev -pkeepalived 
+dh_lintian -pkeepalived 
+dh_install -pkeepalived  
+dh_link -pkeepalived  
+dh_installmime -pkeepalived 
+rm -rf /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/keepalived/samples
+rm -rf /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/keepalived/keepalived.conf
+rm -rf /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/init.d/keepalived.init
+rm -rf /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/rc.d
+rm -rf /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//etc/sysconfig
+rm -rf /home/worker/setup/debian/keepalived-1.1.15-1/debian/keepalived//usr/man
+dh_strip -pkeepalived  
+dh_compress -pkeepalived  
+dh_fixperms -pkeepalived  
+dh_makeshlibs -pkeepalived  
+dh_installdeb -pkeepalived 
+dh_perl -pkeepalived 
+dh_shlibdeps -pkeepalived    
+dpkg-shlibdeps: warning: dependency on libdl.so.2 could be avoided if "debian/keepalived/usr/sbin/keepalived" were not uselessly linked against it (they use none of its symbols).
+dh_gencontrol -pkeepalived  
+dh_md5sums -pkeepalived 
+dh_builddeb -pkeepalived 
+dpkg-deb: building package `keepalived' in `../keepalived_1.1.15-1-0takao7.net1_i386.deb'.
+ dpkg-genchanges  >../keepalived_1.1.15-1-0takao7.net1_i386.changes
+dpkg-genchanges: including full source code in upload
+dpkg-buildpackage: full upload; Debian-native package (full source is included)
+Now running lintian...
+W: keepalived source: out-of-date-standards-version 3.7.3 (current is 3.8.0)
+W: keepalived source: changelog-should-mention-nmu
+W: keepalived source: native-package-with-dash-version
+Finished running lintian.

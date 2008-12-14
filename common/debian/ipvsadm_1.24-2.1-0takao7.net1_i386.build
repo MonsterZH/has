@@ -1,0 +1,89 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: set CFLAGS to default value: -g -O2
+dpkg-buildpackage: set CPPFLAGS to default value: 
+dpkg-buildpackage: set LDFLAGS to default value: 
+dpkg-buildpackage: set FFLAGS to default value: -g -O2
+dpkg-buildpackage: set CXXFLAGS to default value: -g -O2
+dpkg-buildpackage: source package ipvsadm
+dpkg-buildpackage: source version 1:1.24-2.1-0takao7.net1
+dpkg-buildpackage: source changed by TAKAO Kouji <kouji@takao7.net>
+dpkg-buildpackage: host architecture i386
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp configure-stamp
+debconf-updatepo
+# Add here commands to clean up after the build process.
+/usr/bin/make clean
+make[1]: Entering directory `/home/worker/setup/debian/ipvsadm-1.24'
+rm -f ipvsadm ipvsadm.spec ipvsadm-1.24.tar.gz
+rm -rf debian/tmp
+find . -name '*.[ao]' -o -name "*~" -o -name "*.orig" \
+		  -o -name "*.rej" -o -name core | xargs rm -f
+make -C libipvs clean
+make[2]: Entering directory `/home/worker/setup/debian/ipvsadm-1.24/libipvs'
+rm -f *.[ao] *~ *.orig *.rej core
+make[2]: Leaving directory `/home/worker/setup/debian/ipvsadm-1.24/libipvs'
+make[1]: Leaving directory `/home/worker/setup/debian/ipvsadm-1.24'
+dh_clean 
+ dpkg-source -b ipvsadm-1.24
+dpkg-source: warning: source directory 'ipvsadm-1.24' is not <sourcepackage>-<upstreamversion> 'ipvsadm-1.24-2.1'
+dpkg-source: info: using source format `1.0'
+dpkg-source: info: building ipvsadm in ipvsadm_1.24-2.1-0takao7.net1.tar.gz
+dpkg-source: info: building ipvsadm in ipvsadm_1.24-2.1-0takao7.net1.dsc
+ debian/rules build
+dh_testdir
+# Add here commands to configure the package.
+touch configure-stamp
+dh_testdir
+# Add here commands to compile the package.
+/usr/bin/make CFLAGS='-g -I/home/worker/setup/debian/ipvsadm-1.24/debian/include2.6 -O2'
+make[1]: Entering directory `/home/worker/setup/debian/ipvsadm-1.24'
+make -C libipvs
+make[2]: Entering directory `/home/worker/setup/debian/ipvsadm-1.24/libipvs'
+gcc -g -I/home/worker/setup/debian/ipvsadm-1.24/debian/include2.6 -O2 -I/usr/src/linux/include  -DHAVE_NET_IP_VS_H -c -o libipvs.o libipvs.c
+ar rv libipvs.a libipvs.o
+ar: creating libipvs.a
+a - libipvs.o
+make[2]: Leaving directory `/home/worker/setup/debian/ipvsadm-1.24/libipvs'
+gcc -g -I/home/worker/setup/debian/ipvsadm-1.24/debian/include2.6 -O2 -I/usr/src/linux/include -I.. -I. -DVERSION=\"1.24\" -DSCHEDULERS=\""rr|wrr|lc|wlc|lblc|lblcr|dh|sh|sed|nq"\" -DHAVE_POPT -DHAVE_NET_IP_VS_H -c -o ipvsadm.o ipvsadm.c
+gcc -g -I/home/worker/setup/debian/ipvsadm-1.24/debian/include2.6 -O2 -I/usr/src/linux/include -I.. -I. -DVERSION=\"1.24\" -DSCHEDULERS=\""rr|wrr|lc|wlc|lblc|lblcr|dh|sh|sed|nq"\" -DHAVE_POPT -DHAVE_NET_IP_VS_H -c -o config_stream.o config_stream.c
+gcc -g -I/home/worker/setup/debian/ipvsadm-1.24/debian/include2.6 -O2 -I/usr/src/linux/include -I.. -I. -DVERSION=\"1.24\" -DSCHEDULERS=\""rr|wrr|lc|wlc|lblc|lblcr|dh|sh|sed|nq"\" -DHAVE_POPT -DHAVE_NET_IP_VS_H -c -o dynamic_array.o dynamic_array.c
+gcc -g -I/home/worker/setup/debian/ipvsadm-1.24/debian/include2.6 -O2 -o ipvsadm ipvsadm.o config_stream.o dynamic_array.o libipvs/libipvs.a -L/usr/lib -lpopt
+make[1]: Leaving directory `/home/worker/setup/debian/ipvsadm-1.24'
+touch build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_clean -k 
+dh_installdirs
+# Add here commands to install the package into debian/ipvsadm.
+#/usr/bin/make DESTDIR=/home/worker/setup/debian/ipvsadm-1.24/debian/ipvsadm install
+dh_testdir
+dh_testroot
+dh_installchangelogs 
+dh_installdocs
+dh_installexamples
+dh_install
+dh_installinit
+dh_installdebconf
+dh_installman
+dh_link
+dh_strip
+dh_compress
+dh_fixperms
+dh_installdeb
+dh_shlibdeps
+dh_gencontrol
+dh_md5sums
+dh_builddeb
+dpkg-deb: building package `ipvsadm' in `../ipvsadm_1.24-2.1-0takao7.net1_i386.deb'.
+ dpkg-genchanges  >../ipvsadm_1.24-2.1-0takao7.net1_i386.changes
+dpkg-genchanges: including full source code in upload
+dpkg-buildpackage: full upload; Debian-native package (full source is included)
+Now running lintian...
+W: ipvsadm source: debian-watch-file-in-native-package
+W: ipvsadm source: out-of-date-standards-version 3.7.3 (current is 3.8.0)
+W: ipvsadm source: changelog-should-mention-nmu
+W: ipvsadm source: native-package-with-dash-version
+Finished running lintian.

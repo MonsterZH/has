@@ -1,0 +1,29 @@
+Format: 1.8
+Date: Sun, 14 Dec 2008 16:50:52 +0900
+Source: ipvsadm
+Binary: ipvsadm
+Architecture: source i386
+Version: 1:1.24-2.1-0takao7.net1
+Distribution: unstable
+Urgency: low
+Maintainer: Alexander Wirt <formorer@debian.org>
+Changed-By: TAKAO Kouji <kouji@takao7.net>
+Description: 
+ ipvsadm    - Linux Virtual Server support programs
+Changes: 
+ ipvsadm (1:1.24-2.1-0takao7.net1) unstable; urgency=low
+ .
+   * supported linux-image-2.6.26.
+     $ cp /usr/src/linux-2.6.26/include/net/ip_vs.h debian/include/net/ip_vs.h
+Checksums-Sha1: 
+ 1db55823799516c3c268fecfa126881f52e4c455 541 ipvsadm_1.24-2.1-0takao7.net1.dsc
+ f8aff8ab1bdf71bcdc07b99db9b9040dc90c2559 56931 ipvsadm_1.24-2.1-0takao7.net1.tar.gz
+ f256cb3a01df3c02954df6d96bbed9de875441a4 37660 ipvsadm_1.24-2.1-0takao7.net1_i386.deb
+Checksums-Sha256: 
+ 7a9be079e9497a4df64b531962eb74a67bbd185de19f6b9f8581832898898327 541 ipvsadm_1.24-2.1-0takao7.net1.dsc
+ 2b9a477128ad0c682c825e4ef2065689789995c085dade05284e68c1c09bf1df 56931 ipvsadm_1.24-2.1-0takao7.net1.tar.gz
+ 0caf849880a8b5700e7b751ae1ec39752373456ea950463c88e1d47290eb5e63 37660 ipvsadm_1.24-2.1-0takao7.net1_i386.deb
+Files: 
+ 129fb2bf1209570f83bc9fd25acb648b 541 net extra ipvsadm_1.24-2.1-0takao7.net1.dsc
+ 9a3b23c760939eb16c77b08a19d265c6 56931 net extra ipvsadm_1.24-2.1-0takao7.net1.tar.gz
+ 9ef7eb6270d8dfd9edb84aa043079991 37660 net extra ipvsadm_1.24-2.1-0takao7.net1_i386.deb
