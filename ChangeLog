@@ -1,3 +1,8 @@
+Sun Dec 14 20:27:41 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* common/debian/Makefile (all): apt-line に必要なファイルを作成する
+	  ための Makefile を追加。
+
 Sun Dec 14 20:21:23 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* common/docs/dell_poweredge_t105.rd: インストールする Linux カーネ
