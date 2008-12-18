@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+require "timeout"
+
 module Heatbeat
   # heatbeat のリソースを表現する抽象クラス。
   class Resource
@@ -71,7 +73,13 @@ module Heatbeat
     end
 
     def pidof(process_name)
-      return execute("#{PIDOF_COMMAND} #{process_name}").split.collect { |i| i.to_i }
+      begin
+        return execute("#{PIDOF_COMMAND} #{process_name}").split.collect { |i|
+          i.to_i
+        }
+      rescue Resource::Error
+        return []
+      end
     end
 
     def killall(signal, pids)
