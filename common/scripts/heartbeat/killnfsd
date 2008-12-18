@@ -1,0 +1,20 @@
+#!/usr/bin/ruby
+
+require File.expand_path("resource", File.dirname(__FILE__))
+
+module Heatbeat
+  class Killnfsd < Resource
+    def stop
+      return killall("KILL", pidof("nfsd"))
+    end
+
+    def check_status
+      return pidof("nfsd").length > 0
+    end
+  end
+end
+
+if __FILE__ == $0
+  res = Heatbeat::Killnfsd.run(ARGV)
+  exit(res)
+end
