@@ -1,3 +1,7 @@
+Tue Dec 23 20:15:00 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* common/docs/syslog-ng.rd: syslog-ng の説明を追加。
+
 Tue Dec 23 20:14:32 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* common/docs/keepalived.rd: keepalived の説明を追加。
