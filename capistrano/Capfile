@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+
+require "tempfile"
+require "pp"
+
+load "config/deploy"
+
+namespace :has do
+  # 設定ファイルの一覧を返す。
+  def config_files(type)
+    path = File.expand_path("#{type}/config_files", File.dirname(__FILE__))
+    return File.read(path).to_a.collect { |s|
+      s.strip.chomp
+    }.delete_if { |s|
+      s.empty? || /^#/.match(s)
+    }
+  end
+  
+  task :get_config_files do
+    t = Tempfile.new("t", tmpdir)
+    temp_path = t.path
+    t.close
+
+    types = ["server", "lv", "storage"]
+    types.each do |type|
+      find_servers(:roles => type).each do |server|
+        config_files(type).each do |path|
+          begin
+            get(path, temp_path, :hosts => server.host)
+            local_path = File.join("work", $hosts.index(server.host), path)
+            FileUtils.mkdir_p(File.dirname(local_path))
+            FileUtils.mv(temp_path, local_path)
+          rescue Capistrano::TransferError
+          end
+        end
+      end
+    end
+  end
+end
+
+# Local Variables:
+# mode: ruby
+# End:

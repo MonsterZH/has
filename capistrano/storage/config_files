@@ -1,0 +1,5 @@
+/etc/ha.d/ha.cf
+/etc/ha.d/haresources
+/etc/drbd.conf
+/etc/exports
+/etc/default/nfs-common
