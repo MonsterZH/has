@@ -1,3 +1,22 @@
+Tue Dec 23 20:13:24 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* common/docs/dell_poweredge_t105.rd: 追記。
+
+Mon Dec 15 20:10:57 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* w101/docs/install.rd: 全体的に章を見直した。drbd について追記。
+
+	* lv1/docs/install.rd: syslog-ng のインストールを追加。
+	  ロードバランサについて追記。
+
+	* common/docs/syslog-ng.rd: syslog-ng に関する文書を追加。
+
+	* common/docs/keepalived.rd: LVS を実現するために使用できるソフトウェ
+	  ア keepalived に関する文書を追加。
+	
+	* common/docs/ipvsadm.rd: IPVS を管理するためのソフトウェア
+	  ipvsadm に関する文書を追加。
+
 Mon Dec 15 00:23:10 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* lv1/docs/install.rd: IPVS NAT のロードバランサのインストールを追記。
