@@ -1,3 +1,7 @@
+Tue Dec 23 20:14:05 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* common/docs/ipvsadm.rd: ipvsadm の説明を追加。
+
 Tue Dec 23 20:13:24 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* common/docs/dell_poweredge_t105.rd: 追記。
