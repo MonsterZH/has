@@ -111,6 +111,10 @@ common/docs/logcheck.rd を参照。
 
 common/docs/ulogd.rd を参照。
 
+== syslog-ng のインストール
+
+common/docs/syslog-ng.rd を参照。
+
 == パケットフィルタの設定
 
 common/docs/iptables.rd を参照。
@@ -124,22 +128,20 @@ IPVS NAT によるロードバランサを設定する。
 
 ロードバランサを実現するためのソフトウェア。
 
-* ipvsadm(私の自作)
-* keepalived(私の自作)
+* ipvsadm(私の自作、Linux カーネル 2.6.26 用。たぶん、2.6.10 から 2.6.28 まで対応)
+* keepalived(私の自作、Linux カーネル 2.6.26 用。たぶん、2.6.10 から 2.6.28 まで対応)
 * iptables(インストール済み)
 * iproute
 
 自作パッケージ用の apt-line を追加する。
 
   lv1$ cd ~/setup/
-  lv1$ svn co http://has.googlecode.com/svn/common/debian debian
-  lv1$ cd debian
-  lv1$ make
-  lv1$ sudo vi /etc/apt/sources.list.d/mine.list
-  lv1$ cat /etc/apt/sources.list.d/mine.list
+  lv1$ svn co http://has.googlecode.com/svn/ has
+  lv1$ sudo vi /etc/apt/sources.list.d/has.list
+  lv1$ cat /etc/apt/sources.list.d/has.list
     (以下、実行結果)
-    deb file:///home/worker/setup/debian ./
-    deb-src file:///home/worker/setup/debian ./
+    deb file:///home/worker/setup/has/common/debian ./
+    deb-src file:///home/worker/setup/has/common/debian ./
 
 インストールする。
 
