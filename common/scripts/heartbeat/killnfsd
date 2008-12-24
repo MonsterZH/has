@@ -4,9 +4,11 @@ require File.expand_path("resource", File.dirname(__FILE__))
 
 module Heatbeat
   class Killnfsd < Resource
-    def stop
+    def start
       return killall("KILL", pidof("nfsd"))
     end
+
+    alias :stop :start
 
     def check_status
       return pidof("nfsd").length > 0

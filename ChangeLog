@@ -1,3 +1,8 @@
+Thu Dec 25 01:14:09 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* common/scripts/heartbeat/killnfsd (Heatbeat::Killnfsd): start を
+	  作成。stop と全く同じ処理なので、 alias にしている。
+
 Tue Dec 23 20:18:08 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* capistrano: Capistrano を使ったシステム管理用のディレクトリと設定
