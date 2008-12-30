@@ -3,3 +3,4 @@
 /etc/drbd.conf
 /etc/exports
 /etc/default/nfs-common
+/etc/mysql/conf.d/my.cnf

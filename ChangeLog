@@ -1,3 +1,7 @@
+Tue Dec 30 20:51:14 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* capistrano/storage/config_files: /etc/mysql/conf.d/my.cnf を追加。
+
 Tue Dec 30 20:50:38 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* capistrano/server/config_files: 以下を追加。
