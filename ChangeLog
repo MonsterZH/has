@@ -1,3 +1,10 @@
+Tue Dec 30 20:50:38 2008  TAKAO Kouji  <kouji@takao7.net>
+
+	* capistrano/server/config_files: 以下を追加。
+	  * /etc/apcupsd/apcupsd.conf
+	  * /etc/default/apcupsd
+	  * /etc/default/nfs-common
+
 Tue Dec 30 20:49:50 2008  TAKAO Kouji  <kouji@takao7.net>
 
 	* w101/docs/install.rd: MySQL、Radiant を更新した。

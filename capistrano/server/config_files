@@ -20,3 +20,6 @@
 /etc/packet-filter.d/300-accepts
 /etc/packet-filter.d/999-ulogd
 #/etc/logcheck/logcheck.logfiles
+/etc/apcupsd/apcupsd.conf
+/etc/default/apcupsd
+/etc/default/nfs-common
