@@ -241,6 +241,53 @@ TODO: root ユーザのパスワードの設定や、ユーザの追加、ファ
     Successfully installed mongrel_cluster-1.0.5
     1 gem installed
 
+= Radiant
+
+CMS として Radiant を導入する。
+ruby-lang.org のように NEWS とかをそこにはれればいいだろうね。
+
+== インストール
+
+現在、公式サイトの情報によると Radiant 0.6.9 は rails 2.2 に対応していない。
+rails 2.1.2をインストールする。
+
+  w101$ sudo gem1.8 install rails --version=2.1.2 --no-ri --no-rdoc
+    Successfully installed activesupport-2.1.2
+    Successfully installed activerecord-2.1.2
+    Successfully installed actionpack-2.1.2
+    Successfully installed actionmailer-2.1.2
+    Successfully installed activeresource-2.1.2
+    Successfully installed rails-2.1.2
+    6 gems installed
+
+  w101$ sudo gem1.8 install radiant --no-ri --no-rdoc
+    Successfully installed radiant-0.6.9
+    1 gem installed
+
+== 設定
+
+: 配置する場所
+  /var/share/data/nfs/radiant/
+
+  実際には NFS で /var/share/nfs/radiant/ にマウントする。
+
+: DB
+  MySQL
+
+NFS 上に Radiant を配置する。
+マウントポイントを用意する。
+
+  w10[12]$ sudo mkdir /var/share/nfs
+
+マウントする。
+
+  w10[12]$ sudo mount -t nfs -o rw,hard,intr,noac data:/var/share/data/nfs /var/share/nfs
+
+== 参考資料
+
+: Downloading and Installing Radiant
+  http://wiki.radiantcms.org/Downloading_and_Installing_Radiant
+
 ############################################################
 = ファイルサーバの設定
 
@@ -845,3 +892,144 @@ lv1 で /var/share/data をマウントして、watch コマンドで 0.5 秒間
       psmisc{a} 
     0 packages upgraded, 11 newly installed, 0 to remove and 0 not upgraded.
     Need to get 35.6MB of archives. After unpacking 105MB will be used.
+
+== 設定
+
+: データベース領域のトップディレクトリ
+  /var/share/data/mysql
+: ユーザ
+  mysql
+: グループ
+  mysql
+: ポート
+  3306
+: ソケット
+  /var/run/mysqld/mysqld.sock
+: PID
+  /var/run/mysqld/mysqld.pid
+
+MySQL のデータディクレクトリを /var/share/data/mysql に移動させる。
+
+  w101$ sudo /etc/init.d/mysql stop
+  w101$ sudo mv -v /var/lib/mysql /var/share/data/
+
+また、w102 は .old にリネームしておく。
+
+  w102$ sudo /etc/init.d/mysql stop
+  w102$ sudo mv -v /var/lib/mysql /var/lib/mysql.old
+
+mysql のデータディクレクトリの指定を変更する。
+
+mysql を heartbeat のリソースに追加するための準備。
+
+  w10[12]$ sudo update-rc.d -f mysql remove
+     Removing any system startup links for /etc/init.d/mysql ...
+       /etc/rc0.d/K21mysql
+       /etc/rc1.d/K21mysql
+       /etc/rc2.d/S19mysql
+       /etc/rc3.d/S19mysql
+       /etc/rc4.d/S19mysql
+       /etc/rc5.d/S19mysql
+       /etc/rc6.d/K21mysql
+
+  w10[12]$ sudo vi /etc/mysql/conf.d/my.cnf
+  w10[12]$ cat /etc/mysql/conf.d/my.cnf
+    [mysqld]
+    datadir = /var/share/data/mysql
+    bind-address = 0.0.0.0
+
+  w101$ sudo /etc/init.d/mysql start
+    Starting MySQL database server: mysqld.
+    Checking for corrupt, not cleanly closed and upgrade needing tables..
+
+  w101$ netstat -ln | grep 3306
+    tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN     
+
+  w101$ mysql --user=root
+    mysql> show databases;
+    +--------------------+
+    | Database           |
+    +--------------------+
+    | information_schema | 
+    | mysql              | 
+    | test               | 
+    +--------------------+
+    3 rows in set (0.00 sec)
+
+    mysql> quit;
+
+root ユーザのパスワードを設定する。
+
+  w101$ mysql -u root -D mysql
+    mysql> UPDATE user SET password=password('new-password') WHERE user='root';
+      (new-password の箇所に root ユーザの実際のパスワードを指定する。)
+      Query OK, 3 rows affected (0.00 sec)
+      Rows matched: 3  Changed: 3  Warnings: 0
+
+    mysql> FLUSH PRIVILEGES;
+      Query OK, 0 rows affected (0.00 sec)
+
+    mysql> quit
+
+  w101$ mysql -u root -D mysql -p
+    Enter password: (MySQL の root ユーザのパスワードを入力する。)
+    mysql> quit
+
+heartbeat に mysql リソースを追加する。
+
+  w10[12]$ sudo vi /etc/heartbeat/haresources
+  w10[12]$ cat /etc/heartbeat/haresources
+    w101 drbddisk Filesystem::/dev/drbd0::/var/share/data::xfs 192.168.77.200/24/eth0 killnfsd nfs-common nfs-kernel-server mysql
+
+サービスが起動できることを確認する。
+
+standby のあと w102 で kernel のエラーが出力された。
+マジック sysrq パターンだ。
+
+w102$  w102 kernel: [140706.471113] ------------[ cut here ]------------
+ w102 kernel: [140706.471113] invalid opcode: 0000 [#1] SMP
+ w102 kernel: [140706.471113] Process mount (pid: 12812, ti=f59e0000 task=f77aea40 task.ti=f59e0000)
+ w102 kernel: [140706.471113] Stack: f77bac00 c0175a07 c01761c2 c017557b f6b46cc0 f8d8a900 00000000 00000000
+ w102 kernel: [140706.471113]        c0176404 00000000 f6b46cc0 f8d75376 f6b46cc0 f8d8a900 00000000 fffffff4
+ w102 kernel: [140706.471113]        c0175e2d f8d75376 f6b46cc0 f7f14000 00000000 f7f14000 ffffffed f8d8a900
+ w102 kernel: [140706.471113] Call Trace:
+ w102 kernel: [140706.471113]  [<c0175a07>] sget+0x2c2/0x2cb
+ w102 kernel: [140706.471113]  [<c01761c2>] set_anon_super+0x0/0x93
+ w102 kernel: [140706.471113]  [<c017557b>] compare_single+0x0/0x6
+ w102 kernel: [140706.471113]  [<c0176404>] get_sb_single+0x2b/0x97
+ w102 kernel: [140706.471113]  [<f8d75376>] rpc_fill_super+0x0/0x85 [sunrpc]
+ w102 kernel: [140706.471113]  [<c0175e2d>] vfs_kern_mount+0x7b/0xed
+ w102 kernel: [140706.471113]  [<f8d75376>] rpc_fill_super+0x0/0x85 [sunrpc]
+ w102 kernel: [140706.471113]  [<c0175edd>] do_kern_mount+0x2f/0xb4
+ w102 kernel: [140706.471113]  [<c01882d6>] do_new_mount+0x55/0x89
+ w102 kernel: [140706.471113]  [<c01884b1>] do_mount+0x1a7/0x1c6
+ w102 kernel: [140706.471113]  [<c01864c3>] copy_mount_options+0x26/0x109
+ w102 kernel: [140706.471113]  [<c018853d>] sys_mount+0x6d/0xa8
+ w102 kernel: [140706.471113]  [<c0103853>] sysenter_past_esp+0x78/0xb1
+ w102 kernel: [140706.471113]  =======================
+ w102 kernel: [140706.471113] Code: 85 c0 75 f8 f0 ff 05 e0 66 35 c0 eb 05 bb ea ff ff ff 89 d8 5b 5e 5f c3 53 8b 58 10 85 db 74 1f 89 d8 e8 2d 70 fb ff 85 c0 75 04 <0f> 0b eb fe 64 a1 04 40 3b c0 c1 e0 05 ff 84 18 00 01 00 00 5b
+ w102 kernel: [140706.471113] EIP: [<c0185d86>] get_filesystem+0x13/0x29 SS:ESP 0068:f59e1e78
+
+mysql コマンドにより、 w102 でサービスが提供される事は確認した。
+しかし、 kernel のエラーメッセージは気持ちが悪い。
+エラーメッセージの中に mount という文字がある。
+また、 w102 で mount コマンドを実行しても sunrpc が存在しない。
+もしかすると、また以前発生したエラーなのだろうか。
+
+フェイルバックする。
+
+1分から2分経過後、w102 に一瞬アクセスできなかった。
+SSH が切断された。
+しかしながら、フェイルバックはできた。状況を確認する。
+
+w102 に mount プロセスが止まっているということはない。
+しかし、w102 の mount の実行結果には以下はなかった。
+これは問題なのではないだろうか。
+
+  rpc_pipefs on /var/share/data/nfs/rpc_pipefs type rpc_pipefs (rw)
+
+NFS は奥が深いね。
+
+サービスは再開できたようだ。
+
+今日はここまで。
