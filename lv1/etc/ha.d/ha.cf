@@ -1,0 +1,37 @@
+debugfile /var/log/ha-debug
+logfile	/var/log/ha-log
+logfacility local0
+keepalive 2
+deadtime 30
+warntime 10
+initdead 120
+
+udpport 694
+baud 19200
+serial /dev/ttyS0
+#bcast eth1 eth2
+#mcast eth0 225.0.0.1 694 1 0
+ucast eth1 192.168.77.12
+
+auto_failback off
+
+#stonith baytech /etc/ha.d/conf/stonith.baytech
+#stonith_host *     baytech 10.0.0.3 mylogin mysecretpassword
+#stonith_host ken3  rps10 /dev/ttyS1 kathy 0 
+#stonith_host kathy rps10 /dev/ttyS1 ken3 0 
+
+#watchdog /dev/watchdog
+
+node lv1
+node lv2
+
+ping 210.251.121.129
+#ping_group group1 10.10.10.254 10.10.10.253
+
+#hbaping fc-card-name
+
+#respawn userid /path/name/to/run
+respawn hacluster /usr/lib/heartbeat/ipfail
+
+#apiauth client-name gid=gidlist uid=uidlist
+apiauth ipfail gid=haclient uid=hacluster
