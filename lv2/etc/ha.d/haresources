@@ -1,0 +1,1 @@
+lv1 drbddisk Filesystem::/dev/drbd0::/var/share/data::xfs killnfsd nfs-common nfs-kernel-server Delay::3::0 192.168.77.10/24/eth1 210.251.121.180/25/eth0 keepalived mysql
